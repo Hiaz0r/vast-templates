@@ -32,6 +32,11 @@ QWEN_GGUF_UNET=(
   "https://huggingface.co/QuantStack/Qwen-Image-Edit-2509-GGUF/resolve/main/Qwen-Image-Edit-2509-Q5_1.gguf?download=true"
 )
 
+# Lora → ComfyUI/models/loras/
+QWEN_LORA=(
+  "https://huggingface.co/lightx2v/Qwen-Image-Lightning/resolve/main/Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-4steps-V1.0-bf16.safetensors"
+)
+
 # Text-Encoder (Qwen2.5-VL-7B, GGUF) → ComfyUI/models/text_encoders/
 # (solide Qualität/Größe: Q5_K_M; du kannst hier auch Q6_K oder BF16 wählen)
 QWEN_TEXT_ENCODERS=(
@@ -64,6 +69,7 @@ function provisioning_start() {
 
     # Qwen 2509 Downloads
     provisioning_get_files "${COMFYUI_DIR}/models/unet" "${QWEN_GGUF_UNET[@]}"
+    provisioning_get_files "${COMFYUI_DIR}/models/loras" "${QWEN_LORA[@]}"    
     provisioning_get_files "${COMFYUI_DIR}/models/text_encoders" "${QWEN_TEXT_ENCODERS[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/text_encoders" "${QWEN_MMPROJ[@]}"
     provisioning_get_files "${COMFYUI_DIR}/models/vae" "${QWEN_VAE[@]}"
